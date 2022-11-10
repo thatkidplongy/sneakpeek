@@ -20,7 +20,7 @@ export const StateContext = (props: ChildrenProps) => {
     const [totalQuantities, setTotalQuantities] = useState(0)
     const [quantity, setQuantity] = useState(1)
 
-    let foundProduct: ProductsModel
+    let foundProduct: any
     let index;
 
     const onAddToCart = (product: ProductsModel, quantity: number) => {
@@ -30,12 +30,12 @@ export const StateContext = (props: ChildrenProps) => {
 
             if(checkProductInCart) {
 
-                    const updatedCartItems = cartItems.map((cartProduct: ProductsModel) => {
+                    const updatedCartItems: any = cartItems.map((cartProduct: ProductsModel) => {
                         if(cartProduct._id === product._id) return {
                             ...cartProduct,
                             quantity: cartProduct.quantity + quantity,
                         }
-                    })
+                    }) || []
 
                     setCartItems(updatedCartItems)
                 } else { 
