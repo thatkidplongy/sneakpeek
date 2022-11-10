@@ -26,12 +26,12 @@ const Home = (props: indexPageProps) => {
     <>
       <HeroBanner heroBanner = { heroBannerData } />
 
-      <div className='products-heading'>
+      <div className='text-center my-10 mr-0 text-sky-900'>
         <h2 className='text-3xl font-[800]'>Best selling product</h2>
         <p className='text-base font-[200]'>Speakers of many variations</p>
       </div>
 
-      <div className='products-container'>
+      <div className='flex flex-wrap justify-center gap-5 mt-5 w-full'>
         { productsList }
       </div>
 

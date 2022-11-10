@@ -14,23 +14,18 @@ const FooterBanner = (props: FooterBannerProps) => {
 
   const footerImage = urlFor(image).url()
   return (
-    <div className='footer-banner-container'>
-      <div className='banner-desc'>
-        <div className='left'>
-          <p>{discount}</p>
-          <h3>{largeText1}</h3>
-          <h3>{largeText2}</h3>
-          <p>{saleTime}</p>
+    <div className='h-[400px] top-5 mt-20 pt-[50px] pr-[40px] bg-green-800 rounded-lg relative height-[450px] leading-4 text-white w-full'>
+      <div className='flex justify-between'>
+        <div>
+          <p className='m-4 ml-6 text-lg'>{discount}</p>
+          <h3 className='font-bold text-7xl ml-6'>{largeText1}</h3>
+          <h3 className='font-bold text-7xl ml-6 mb-5'>{largeText2}</h3>
+          <p className='m-4 ml-6 text-lg'>{saleTime}</p>
         </div>
-        <div className="right">
-          <p>{smallText}</p>
-          <h3>{midText}</h3>
-          <p>{desc}</p>
-          <Link
-            href={`product/${product}`}
-          >
-            <button type='button'>{buttonText}</button>
-          </Link>
+        <div className='leading-5'>
+          <p className='m-4 ml-6 text-lg'>{smallText}</p>
+          <h3 className='font-bold text-7xl ml-6'>{midText}</h3>
+          <p className='m-4 ml-6 text-lg'>{desc}</p>
         </div>
 
         <Image 
@@ -38,7 +33,7 @@ const FooterBanner = (props: FooterBannerProps) => {
           width={450}
           height={450}
           alt='footer-image'
-          className='footer-banner-image'
+          className='absolute top-[-25%] left-[30%]'
         />
       </div>
     </div>

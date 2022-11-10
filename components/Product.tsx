@@ -16,18 +16,17 @@ const Product = (props: ProductProps) => {
 
   return (
     <div>
-      <Link href={`/product/${slug.current}`}>
-        <div className='product-card'>
+      <Link href={`/product/${slug.current}`} className=''>
+        <div className='ease-in-out duration-300 hover:scale-105'>
           <Image 
             src={productImage}
             alt='product-image'
             width={250}
             height={250}
-            className='product-image'
-
+            className='bg-slate-100 ease-in-out duration-300 rounded-lg'
           />
-          <p className='product-name'>{name}</p>
-          <p className='product-price'>PHP {price}</p>
+          <p className='font-normal'>{name}</p>
+          <p className='font-bold mt-2 text-zinc-900'>PHP {price}</p>
         </div>
       </Link>
     </div>

@@ -2,11 +2,12 @@ import React, { createContext, useContext, useState, useEffect } from 'react'
 import { toast } from 'react-hot-toast'
 
 import { ProductsModel } from '../interface/index-page/products'
+import { AppContextModel } from '../interface/index-page/AppContext'
 
 const Context = createContext(undefined) as any
 
 type ChildrenProps = {
-    children: any
+    children: AppContextModel
 }
 
 
@@ -14,22 +15,22 @@ type ChildrenProps = {
 export const StateContext = (props: ChildrenProps) => {
     const { children } = props
     const [showCart, setShowCart] = useState(false)
-    const [cartItems, setCartItems] = useState([])
+    const [cartItems, setCartItems] = useState<ProductsModel[]>([])
     const [totalPrice, setTotalPrice] = useState(0)
     const [totalQuantities, setTotalQuantities] = useState(0)
     const [quantity, setQuantity] = useState(1)
 
-    let foundProduct: { quantity: number; price: number } | undefined;
+    let foundProduct: ProductsModel
     let index;
 
     const onAddToCart = (product: ProductsModel, quantity: number) => {
-        const checkProductInCart = cartItems.find((item) => item._id == product._id)
+        const checkProductInCart = cartItems.find((item: ProductsModel) => item._id == product._id)
         setTotalPrice((prevTotalPrice) => prevTotalPrice + product.price * quantity)
         setTotalQuantities((prevTotalQuantities) => prevTotalQuantities + quantity)
 
             if(checkProductInCart) {
 
-                    const updatedCartItems = cartItems.map((cartProduct) => {
+                    const updatedCartItems = cartItems.map((cartProduct: ProductsModel) => {
                         if(cartProduct._id === product._id) return {
                             ...cartProduct,
                             quantity: cartProduct.quantity + quantity,
@@ -47,22 +48,22 @@ export const StateContext = (props: ChildrenProps) => {
 
     }
 
-    const onRemove = (product) => {
-        foundProduct = cartItems.find((item) => item._id === product._id);
-        const newCartItems = cartItems.filter((item) => item._id !== product._id);
+    const onRemove = (product: ProductsModel) => {
+        foundProduct = cartItems.find((item: ProductsModel) => item._id === product._id);
+        const newCartItems = cartItems.filter((item: ProductsModel) => item._id !== product._id);
     
-        setTotalPrice((prevTotalPrice) => prevTotalPrice -foundProduct.price * foundProduct.quantity);
+        setTotalPrice((prevTotalPrice) => prevTotalPrice - foundProduct.price * foundProduct.quantity);
         setTotalQuantities(prevTotalQuantities => prevTotalQuantities - foundProduct.quantity);
         setCartItems(newCartItems);
     }
 
-    const toggleCartItemQuantity = ( id, value ) => {
+    const toggleCartItemQuantity = ( id: string, value: string ) => {
 
-        foundProduct = cartItems.find((item) => item._id === id)
+        foundProduct = cartItems.find((item: ProductsModel) => item._id === id)
 
-        index = cartItems.findIndex((item) => item._id === id)
+        index = cartItems.findIndex((item: ProductsModel) => item._id === id)
 
-        const newCartItems = cartItems.filter((item) => item._id !== id)
+        const newCartItems = cartItems.filter((item: ProductsModel) => item._id !== id)
 
         if(value === 'increment') {
 

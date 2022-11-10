@@ -1,4 +1,5 @@
 export interface ProductsModel {
+    quantity: number
     details: string,
     image: ProductImageModel[],
     name: string,

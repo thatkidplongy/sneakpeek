@@ -12,14 +12,14 @@ const Layout = (props: LayoutProps) => {
   const { children } = props
   
   return (
-    <div className='layout'>
+    <div className='p-10 mb-5'>
       <Head>
         <title>SneakPeek</title>
       </Head>
       <header>
         <Navbar />
       </header>
-      <main className='main-container'> { children } </main>
+      <main className='max-w-[1400px] m-auto w-full'> { children } </main>
       <footer>
         <Footer />
       </footer>
